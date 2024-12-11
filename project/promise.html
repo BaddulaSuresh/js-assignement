@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const prom=new Promise((resolve)=>setTimeout(resolve,1000,'first'));
+const prom1=new Promise((resolve)=>setTimeout(resolve,200,'second'));
+const prom2=new Promise((resolve)=>setTimeout(resolve,3000,'third'));
+Promise.all([prom,prom1,prom2])
+.then((results)=>{
+    console.log(results);
+})
+.catch((error)=>console.error(error));
+const prom3=new Promise((resolve)=>setTimeout(resolve,1000,'first'));
+const prom4=new Promise((resolve)=>setTimeout(resolve,200,'second'));
+const prom5=new Promise((resolve)=>setTimeout(resolve,3000,'third'));
+Promise.allSettled([prom3,prom4,prom5])
+.then((results)=>{
+    console.log(results);
+})
+.catch((error)=>console.error(error));
+const prom6=new Promise((resolve,reject)=>setTimeout(reject,1000,'first'));
+const prom7=new Promise((resolve,reject)=>setTimeout(reject,200,'second'));
+const prom8=new Promise((resolve,reject)=>setTimeout(reject,3000,'third'));
+Promise.any([prom6,prom7,prom8])
+.then((results)=>{
+    console.log(results);
+})
+.catch((error)=>console.error(error));
+    </script>
+</body>
+</html>
